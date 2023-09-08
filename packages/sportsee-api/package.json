@@ -1,5 +1,5 @@
 {
-  "name": "p9-front-end-dashboard",
+  "name": "@sportsee/api",
   "version": "1.0.0",
   "description": "Backend for the 9th project of the new path Front-end Developper",
   "main": "index/app.js",
@@ -19,7 +19,8 @@
   },
   "scripts": {
     "dev": "nodemon app/index.js",
-    "start": "node app/index.js"
+    "start": "node app/index.js",
+    "build": "echo 'nothing to build'"
   },
   "bugs": {
     "url": "https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard/issues"
