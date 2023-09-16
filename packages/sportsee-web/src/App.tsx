@@ -1,7 +1,11 @@
-import "./App.css";
+import TopNavbar from "./components/top-navbar/TopNavbar";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <TopNavbar />
+    </>
+  );
 }
 
 export default App;
