@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev:api": "npm run dev --workspace=@sportsee/api",
-    "dev:web": "npm run dev --workspace=@sportsee/web"
+    "dev:web": "npm run dev --workspace=@sportsee/web",
+    "build:web": "npm run build --workspace=@sportsee/web"
   },
   "author": "",
   "license": "ISC",
