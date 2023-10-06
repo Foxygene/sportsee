@@ -1,9 +1,7 @@
 import SideNavbar from "./components/side-navbar/SideNavbar";
 import TopNavbar from "./components/top-navbar/TopNavbar";
-import getInfo from "./data/info";
 
-function App() {
-  console.log(getInfo("18"));
+function HomePage() {
   return (
     <>
       <TopNavbar />
@@ -30,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;
