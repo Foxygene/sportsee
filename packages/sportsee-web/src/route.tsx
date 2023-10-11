@@ -1,11 +1,11 @@
 import { createHashRouter } from "react-router-dom";
-import HomePage from "./HomePage";
+import HomePage from "./pages/HomePage";
 import users from "./assets/Mocks/mockMainData.json";
-import Profile from "./Profile";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 const profilePage = users.map((profile) => ({
   path: `/user/${profile.id}`,
-  element: <Profile />,
+  element: <ProfilePage key={profile.id} data={profile} />,
 }));
 
 export const router = createHashRouter([

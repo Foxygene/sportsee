@@ -1,6 +1,6 @@
-import SideNavbar from "./components/side-navbar/SideNavbar";
-import TopNavbar from "./components/top-navbar/TopNavbar";
-import users from "./assets/Mocks/mockMainData.json";
+import SideNavbar from "../components/side-navbar/SideNavbar";
+import TopNavbar from "../components/top-navbar/TopNavbar";
+import users from "../assets/Mocks/mockMainData.json";
 import { Link } from "react-router-dom";
 
 function HomePage() {
