@@ -16,3 +16,58 @@ main {
 .red {
   color: red;
 }
+
+.graph-container {
+  background-color: #fbfbfb;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 32px;
+  margin-bottom: 64px;
+}
+
+.info-container .barchart-title {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #20253a;
+}
+
+.legend-container {
+  display: flex;
+}
+
+.legend {
+  padding: 0 26px;
+}
+
+.legend :first-child {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.kg {
+  background: #e60000;
+}
+
+.cal {
+  background: #282d30;
+}
+
+.legend :nth-child(2) {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #74798c;
+}

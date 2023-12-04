@@ -41,10 +41,27 @@ function ProfilePage(prop: userMainData) {
           </span>
         </div>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-        <BarChartSetup
-          barChartData={barChartData}
-          kgMinMaxValues={kgMinMaxValues}
-        />
+        <div className="graph-container">
+          <div className="barchart-container">
+            <div className="info-container">
+              <span className="barchart-title">Activité quotidienne</span>
+              <div className="legend-container">
+                <div className="legend">
+                  <span className="kg"></span>
+                  <span>Poids (kg)</span>
+                </div>
+                <div className="legend">
+                  <span className="cal"></span>
+                  <span>Calories brûlées (kCal)</span>
+                </div>
+              </div>
+            </div>
+            <BarChartSetup
+              barChartData={barChartData}
+              kgMinMaxValues={kgMinMaxValues}
+            />
+          </div>
+        </div>
       </main>
     </>
   );
