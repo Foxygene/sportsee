@@ -2,6 +2,10 @@ main {
   padding: 5rem 10rem;
 }
 
+.barchart-container {
+  padding-bottom: 30px;
+}
+
 .welcome-name {
   font-family: Roboto;
   font-size: 48px;
@@ -25,7 +29,7 @@ main {
   display: flex;
   justify-content: space-between;
   padding: 24px 32px;
-  margin-bottom: 64px;
+  margin-bottom: 47px;
 }
 
 .info-container .barchart-title {
@@ -36,6 +40,7 @@ main {
   letter-spacing: 0px;
   text-align: left;
   color: #20253a;
+  padding-left: 45px;
 }
 
 .legend-container {
