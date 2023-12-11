@@ -2,6 +2,11 @@ main {
   padding: 5rem 10rem;
 }
 
+.main-container {
+  display: flex;
+  gap: 31px;
+}
+
 .barchart-container {
   padding-bottom: 30px;
 }
