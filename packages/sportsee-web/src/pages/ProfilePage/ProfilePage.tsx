@@ -1,4 +1,9 @@
 import BarChartSetup from "../../components/graphs/BarChartSetup";
+import InfoCards from "../../components/info-card/InfoCard";
+import caloriesIconLocation from "../../assets/calories-icon.svg";
+import proteinIconLocation from "../../assets/protein-icon.svg";
+import carbsIconLocation from "../../assets/carbs-icon.svg";
+import fatIconLocation from "../../assets/fat-icon.svg";
 import SideNavbar from "../../components/side-navbar/SideNavbar";
 import TopNavbar from "../../components/top-navbar/TopNavbar";
 import getActivityData from "../../data/info";
@@ -41,24 +46,51 @@ function ProfilePage(prop: userMainData) {
           </span>
         </div>
         <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-        <div className="graph-container">
-          <div className="barchart-container">
-            <div className="info-container">
-              <span className="barchart-title">Activité quotidienne</span>
-              <div className="legend-container">
-                <div className="legend">
-                  <span className="kg"></span>
-                  <span>Poids (kg)</span>
-                </div>
-                <div className="legend">
-                  <span className="cal"></span>
-                  <span>Calories brûlées (kCal)</span>
+
+        <div className="main-container">
+          <div className="graph-container">
+            <div className="barchart-container">
+              <div className="info-container">
+                <span className="barchart-title">Activité quotidienne</span>
+                <div className="legend-container">
+                  <div className="legend">
+                    <span className="kg"></span>
+                    <span>Poids (kg)</span>
+                  </div>
+                  <div className="legend">
+                    <span className="cal"></span>
+                    <span>Calories brûlées (kCal)</span>
+                  </div>
                 </div>
               </div>
+              <div className="main-container">
+                <BarChartSetup
+                  barChartData={barChartData}
+                  kgMinMaxValues={kgMinMaxValues}
+                />
+              </div>
             </div>
-            <BarChartSetup
-              barChartData={barChartData}
-              kgMinMaxValues={kgMinMaxValues}
+          </div>
+          <div>
+            <InfoCards
+              iconPath={caloriesIconLocation}
+              value={prop.data.keyData.calorieCount}
+              type={["Calories", "kCal"]}
+            />
+            <InfoCards
+              iconPath={proteinIconLocation}
+              value={prop.data.keyData.proteinCount}
+              type={["Proteines", "g"]}
+            />
+            <InfoCards
+              iconPath={carbsIconLocation}
+              value={prop.data.keyData.carbohydrateCount}
+              type={["Glucides", "g"]}
+            />
+            <InfoCards
+              iconPath={fatIconLocation}
+              value={prop.data.keyData.lipidCount}
+              type={["Lipides", "g"]}
             />
           </div>
         </div>
