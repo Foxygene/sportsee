@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Bar,
   BarChart,
@@ -9,30 +10,49 @@ import {
 } from "recharts";
 import "./barChartSetup.css";
 
+interface PayloadItem {
+  //Typing du payload pour le tooltip
+  payload: {
+    day: string;
+    Kilogrammes: number;
+    Calories: number;
+  };
+}
+
+interface CustomTooltipProps {
+  //Typing des default props de la fonction
+  active?: boolean;
+  payload?: PayloadItem[];
+}
+
+const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
+  const [isVisible, setIsVisible] = useState<boolean | undefined>(false);
+
+  React.useEffect(() => {
+    setIsVisible(active && payload && payload.length > 0);
+  }, [active, payload]);
+
+  if (!isVisible || !payload || !payload[0]?.payload) {
+    //Failsafe pour eviter tout crash
+    return null;
+  }
+
+  return (
+    <div className="tool-tip__bar-chart">
+      <p className="tool-tip__bar-chart-text">
+        {`${payload[0]?.payload.Kilogrammes}kg`}
+      </p>
+      <p className="tool-tip__bar-chart-text">
+        {`${payload[0]?.payload.Calories}Kcal`}
+      </p>
+    </div>
+  );
+};
+
 function BarChartSetup(props: {
   barChartData: { day: string; Kilogrammes: number; Calories: number }[];
   kgMinMaxValues: number[];
 }) {
-  function CustomTooltip(active: any): JSX.Element | null {
-    const payloadIsEmpty = active.payload.length;
-
-    if (!payloadIsEmpty) {
-      return null;
-    }
-
-    return (
-      <div className="tool-tip__bar-chart">
-        <p className="tool-tip__bar-chart-text">
-          {`${active.payload[0].payload.Kilogrammes}kg`}
-        </p>
-        <p className="tool-tip__bar-chart-text">
-          {" "}
-          {`${active.payload[0].payload.Calories}Kcal`}
-        </p>
-      </div>
-    );
-  }
-
   return (
     <ResponsiveContainer className={"barchart"} width="100%" height={185}>
       <BarChart
