@@ -81,3 +81,9 @@ main {
   text-align: left;
   color: #74798c;
 }
+
+.infocards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 39px;
+}

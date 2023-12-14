@@ -1,5 +1,5 @@
 import BarChartSetup from "../../components/graphs/BarChartSetup";
-import InfoCards from "../../components/info-card/InfoCard";
+import InfoCard from "../../components/info-card/InfoCard";
 import caloriesIconLocation from "../../assets/calories-icon.svg";
 import proteinIconLocation from "../../assets/protein-icon.svg";
 import carbsIconLocation from "../../assets/carbs-icon.svg";
@@ -71,23 +71,23 @@ function ProfilePage(prop: userMainData) {
               </div>
             </div>
           </div>
-          <div>
-            <InfoCards
+          <div className="infocards-container">
+            <InfoCard
               iconPath={caloriesIconLocation}
               value={prop.data.keyData.calorieCount}
               type={["Calories", "kCal"]}
             />
-            <InfoCards
+            <InfoCard
               iconPath={proteinIconLocation}
               value={prop.data.keyData.proteinCount}
               type={["Proteines", "g"]}
             />
-            <InfoCards
+            <InfoCard
               iconPath={carbsIconLocation}
               value={prop.data.keyData.carbohydrateCount}
               type={["Glucides", "g"]}
             />
-            <InfoCards
+            <InfoCard
               iconPath={fatIconLocation}
               value={prop.data.keyData.lipidCount}
               type={["Lipides", "g"]}
