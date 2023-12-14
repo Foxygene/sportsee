@@ -38,13 +38,9 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   }
 
   return (
-    <div className="tool-tip__bar-chart">
-      <p className="tool-tip__bar-chart-text">
-        {`${payload[0]?.payload.Kilogrammes}kg`}
-      </p>
-      <p className="tool-tip__bar-chart-text">
-        {`${payload[0]?.payload.Calories}Kcal`}
-      </p>
+    <div className="tooltip-container">
+      <p className="tooltip-text">{`${payload[0]?.payload.Kilogrammes}kg`}</p>
+      <p className="tooltip-text">{`${payload[0]?.payload.Calories}Kcal`}</p>
     </div>
   );
 };
