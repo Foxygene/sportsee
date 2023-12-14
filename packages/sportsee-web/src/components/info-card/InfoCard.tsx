@@ -1,22 +1,25 @@
 import { FC } from "react";
+import "./infoCard.css";
 
-interface InfoCardsProps {
+interface InfoCardProps {
   iconPath: string;
   value: number;
   type: string[];
 }
 
-const InfoCards: FC<InfoCardsProps> = ({ iconPath, value, type }) => {
+const InfoCard: FC<InfoCardProps> = ({ iconPath, value, type }) => {
   return (
-    <div>
+    <div className="infocard-container">
       <img src={iconPath} />
-      <p>
-        {value}
-        {type[1]}
-      </p>
-      <p>{type[0]}</p>
+      <div className="infocard-text">
+        <p className="infocard-value">
+          {value}
+          {type[1]}
+        </p>
+        <p className="infocard-desc">{type[0]}</p>
+      </div>
     </div>
   );
 };
 
-export default InfoCards;
+export default InfoCard;
