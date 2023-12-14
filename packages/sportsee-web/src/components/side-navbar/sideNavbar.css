@@ -6,10 +6,11 @@
   height: 100vh;
   align-items: center;
   position: fixed;
+  top: 0;
 }
 
 .icons-container {
-  margin-top: 170px;
+  margin-top: 30vh;
   margin-bottom: 200px;
   display: flex;
   width: 64px;
