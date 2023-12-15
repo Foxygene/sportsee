@@ -1,4 +1,4 @@
-import BarChartSetup from "../../components/graphs/BarChartSetup";
+import BarChartSetup from "../../components/graphs/bar-chart-setup/BarChartSetup";
 import InfoCard from "../../components/info-card/InfoCard";
 import caloriesIconLocation from "../../assets/calories-icon.svg";
 import proteinIconLocation from "../../assets/protein-icon.svg";
