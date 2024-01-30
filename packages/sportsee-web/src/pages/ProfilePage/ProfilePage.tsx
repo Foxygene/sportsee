@@ -6,9 +6,10 @@ import carbsIconLocation from "../../assets/carbs-icon.svg";
 import fatIconLocation from "../../assets/fat-icon.svg";
 import SideNavbar from "../../components/side-navbar/SideNavbar";
 import TopNavbar from "../../components/top-navbar/TopNavbar";
-import getActivityData from "../../data/info";
+import { getActivityData, getAverageSessionData } from "../../data/info";
 import { userMainData } from "../../types/userMainData";
 import "./profilePage.css";
+import LineChartSetup from "../../components/graphs/line-chart-setup/LineChartSetup";
 
 function ProfilePage(prop: userMainData) {
   const activity = getActivityData(true, prop.data.id)![0];
@@ -20,6 +21,17 @@ function ProfilePage(prop: userMainData) {
       Calories: session.calories,
     };
   });
+
+  const average = getAverageSessionData(true, prop.data.id)![0];
+
+  const lineChartData = average.sessions.map((session) => {
+    return {
+      day: session.day,
+      sessionLength: session.sessionLength,
+    };
+  });
+
+  console.log(average);
 
   const kgMinMaxValues = [
     Math.min(
@@ -68,6 +80,12 @@ function ProfilePage(prop: userMainData) {
                   barChartData={barChartData}
                   kgMinMaxValues={kgMinMaxValues}
                 />
+              </div>
+              <div className="linechart-container">
+                <span className="linechart-title">
+                  Durée moyenne des sessions
+                </span>
+                <LineChartSetup lineChartData={lineChartData} />
               </div>
             </div>
           </div>
