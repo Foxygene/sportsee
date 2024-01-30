@@ -1,0 +1,29 @@
+.linechart-container {
+  background-color: #ff0101;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.linechart-title {
+  opacity: 0.5;
+  color: #ffffff;
+}
+
+.chart-container {
+  background-color: #ff0101;
+}
+
+.tooltip-line-container {
+  padding: 0 6px;
+  background-color: #fff;
+}
+
+.tooltip-line-text {
+  font-family: Roboto;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: black;
+}
