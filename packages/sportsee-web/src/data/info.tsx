@@ -7,7 +7,6 @@ export function getActivityData(useMock: boolean, userID: number) {
   if (useMock) {
     return mockActivity.filter((user) => user.userId === userID);
   }
-  //utiliser terner quand on fetch
 }
 
 export function getAverageSessionData(useMock: boolean, userID: number) {
