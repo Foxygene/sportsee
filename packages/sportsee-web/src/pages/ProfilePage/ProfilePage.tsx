@@ -31,8 +31,6 @@ function ProfilePage(prop: userMainData) {
     };
   });
 
-  console.log(average);
-
   const kgMinMaxValues = [
     Math.min(
       ...barChartData.map((session) => {
