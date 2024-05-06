@@ -87,3 +87,8 @@ main {
   flex-direction: column;
   gap: 39px;
 }
+
+.second-container {
+  display: flex;
+  justify-content: space-between;
+}
