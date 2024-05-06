@@ -6,10 +6,15 @@ import carbsIconLocation from "../../assets/carbs-icon.svg";
 import fatIconLocation from "../../assets/fat-icon.svg";
 import SideNavbar from "../../components/side-navbar/SideNavbar";
 import TopNavbar from "../../components/top-navbar/TopNavbar";
-import { getActivityData, getAverageSessionData } from "../../data/info";
+import {
+  getActivityData,
+  getAverageSessionData,
+  getPerformanceData,
+} from "../../data/info";
 import { userMainData } from "../../types/userMainData";
 import "./profilePage.css";
 import LineChartSetup from "../../components/graphs/line-chart-setup/LineChartSetup";
+import RadarChartSetup from "../../components/graphs/radar-chart-setup/RadarChartSetup";
 
 function ProfilePage(prop: userMainData) {
   const activity = getActivityData(true, prop.data.id)![0];
@@ -43,6 +48,8 @@ function ProfilePage(prop: userMainData) {
       })
     ),
   ];
+
+  const performance = getPerformanceData(true, prop.data.id)![0];
 
   return (
     <>
@@ -79,11 +86,14 @@ function ProfilePage(prop: userMainData) {
                   kgMinMaxValues={kgMinMaxValues}
                 />
               </div>
-              <div className="linechart-container">
-                <span className="linechart-title">
-                  Durée moyenne des sessions
-                </span>
-                <LineChartSetup lineChartData={lineChartData} />
+              <div className="second-container">
+                <div className="linechart-container">
+                  <span className="linechart-title">
+                    Durée moyenne des sessions
+                  </span>
+                  <LineChartSetup lineChartData={lineChartData} />
+                </div>
+                <RadarChartSetup RadarChartData={performance.data} />
               </div>
             </div>
           </div>
