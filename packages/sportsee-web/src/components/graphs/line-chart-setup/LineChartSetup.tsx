@@ -31,7 +31,7 @@ function LineChartSetup(props: {
 }) {
   return (
     <div className="chart-container">
-      <ResponsiveContainer className={"linechart"} width="100%" height={300}>
+      <ResponsiveContainer className={"linechart"} width={258} height={263}>
         <LineChart
           data={props.lineChartData}
           margin={{
