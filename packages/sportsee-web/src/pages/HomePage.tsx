@@ -2,6 +2,7 @@ import SideNavbar from "../components/side-navbar/SideNavbar";
 import TopNavbar from "../components/top-navbar/TopNavbar";
 import users from "../assets/Mocks/mockMainData.json";
 import { Link } from "react-router-dom";
+import { DataSwitcherButton } from "../components/DataSwitcherButton";
 
 function HomePage() {
   return (
@@ -9,6 +10,7 @@ function HomePage() {
       <TopNavbar />
       <SideNavbar />
       <main>
+        <DataSwitcherButton></DataSwitcherButton>
         <ul>
           {users.map((user) => (
             <li>
