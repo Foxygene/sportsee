@@ -15,9 +15,11 @@ import { userMainData } from "../../types/userMainData";
 import "./profilePage.css";
 import LineChartSetup from "../../components/graphs/line-chart-setup/LineChartSetup";
 import RadarChartSetup from "../../components/graphs/radar-chart-setup/RadarChartSetup";
+import { useDataSwitch } from "../../hooks/useDataSwitch";
 
 function ProfilePage(prop: userMainData) {
-  const activity = getActivityData(true, prop.data.id)![0];
+  const { isMock } = useDataSwitch();
+  const activity = getActivityData(isMock, prop.data.id)![0];
 
   const barChartData = activity.sessions.map((session) => {
     return {
@@ -27,7 +29,7 @@ function ProfilePage(prop: userMainData) {
     };
   });
 
-  const average = getAverageSessionData(true, prop.data.id)![0];
+  const average = getAverageSessionData(isMock, prop.data.id)![0];
 
   const lineChartData = average.sessions.map((session) => {
     return {
@@ -49,7 +51,7 @@ function ProfilePage(prop: userMainData) {
     ),
   ];
 
-  const performance = getPerformanceData(true, prop.data.id)![0];
+  const performance = getPerformanceData(isMock, prop.data.id)![0];
 
   return (
     <>

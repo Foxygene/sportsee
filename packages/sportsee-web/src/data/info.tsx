@@ -3,20 +3,20 @@ import mockAverageSession from "../assets/Mocks/mockAverageSessions.json";
 // import mockMainData from "../assets/Mocks/mockMainData.json";
 import mockPerformance from "../assets/Mocks/mockPerformance.json";
 
-export function getActivityData(useMock: boolean, userID: number) {
-  if (useMock) {
+export function getActivityData(isMock: boolean, userID: number) {
+  if (isMock) {
     return mockActivity.filter((user) => user.userId === userID);
   }
 }
 
-export function getAverageSessionData(useMock: boolean, userID: number) {
-  if (useMock) {
+export function getAverageSessionData(isMock: boolean, userID: number) {
+  if (isMock) {
     return mockAverageSession.filter((user) => user.userId === userID);
   }
 }
 
-export function getPerformanceData(useMock: boolean, userID: number) {
-  if (useMock) {
+export function getPerformanceData(isMock: boolean, userID: number) {
+  if (isMock) {
     return mockPerformance.filter((user) => user.userId === userID);
   }
 }

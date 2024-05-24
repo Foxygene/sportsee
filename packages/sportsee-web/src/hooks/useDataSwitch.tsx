@@ -1,13 +1,23 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 
 interface Props {
   children?: ReactNode;
 }
 
-export const dataSwitchContext = createContext({
+const dataSwitchContext = createContext({
   dataSwitchValue: "api",
   dataSwitch: () => {},
 });
+
+export function useDataSwitch() {
+  const { dataSwitchValue, dataSwitch } = useContext(dataSwitchContext);
+  return {
+    isMock: dataSwitchValue === "mock",
+    isAPI: dataSwitchValue === "api",
+    dataSwitchValue,
+    dataSwitch,
+  };
+}
 
 export function DataSwitchContextProvider({ children }: Props) {
   const [dataSwitchValue, setDataSwitchValue] = useState("mock");
