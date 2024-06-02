@@ -16,6 +16,7 @@ import "./profilePage.css";
 import LineChartSetup from "../../components/graphs/line-chart-setup/LineChartSetup";
 import RadarChartSetup from "../../components/graphs/radar-chart-setup/RadarChartSetup";
 import { useDataSwitch } from "../../hooks/useDataSwitch";
+import RadialBarChartSetup from "../../components/graphs/radial-bar-chart-setup/RadialBarChart";
 
 function ProfilePage(prop: userMainData) {
   const { isMock } = useDataSwitch();
@@ -96,6 +97,9 @@ function ProfilePage(prop: userMainData) {
                   <LineChartSetup lineChartData={lineChartData} />
                 </div>
                 <RadarChartSetup RadarChartData={performance.data} />
+                <RadialBarChartSetup
+                  score={prop.data.todayScore ?? prop.data.score}
+                />
               </div>
             </div>
           </div>
