@@ -1,39 +1,53 @@
-import BarChartSetup from '../../components/graphs/bar-chart-setup/BarChartSetup';
-import InfoCard from '../../components/info-card/InfoCard';
-import caloriesIconLocation from '../../assets/calories-icon.svg';
-import proteinIconLocation from '../../assets/protein-icon.svg';
-import carbsIconLocation from '../../assets/carbs-icon.svg';
-import fatIconLocation from '../../assets/fat-icon.svg';
-import SideNavbar from '../../components/side-navbar/SideNavbar';
-import TopNavbar from '../../components/top-navbar/TopNavbar';
+import BarChartSetup from "../../components/graphs/bar-chart-setup/BarChartSetup";
+import InfoCard from "../../components/info-card/InfoCard";
+import caloriesIconLocation from "../../assets/calories-icon.svg";
+import proteinIconLocation from "../../assets/protein-icon.svg";
+import carbsIconLocation from "../../assets/carbs-icon.svg";
+import fatIconLocation from "../../assets/fat-icon.svg";
+import SideNavbar from "../../components/side-navbar/SideNavbar";
+import TopNavbar from "../../components/top-navbar/TopNavbar";
 import getData, {
   getActivityData,
   getAverageSessionData,
   getPerformanceData,
   useDataFetcher,
-} from '../../services/GetData';
-import { userMainData } from '../../types/userMainData';
-import './profilePage.css';
-import LineChartSetup from '../../components/graphs/line-chart-setup/LineChartSetup';
-import RadarChartSetup from '../../components/graphs/radar-chart-setup/RadarChartSetup';
-import { useDataSwitch } from '../../hooks/useDataSwitch';
-import RadialBarChartSetup from '../../components/graphs/radial-bar-chart-setup/RadialBarChart';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import GetData from '../../services/GetData';
+} from "../../services/GetData";
+import { userMainData } from "../../types/userMainData";
+import "./profilePage.css";
+import LineChartSetup from "../../components/graphs/line-chart-setup/LineChartSetup";
+import RadarChartSetup from "../../components/graphs/radar-chart-setup/RadarChartSetup";
+import { useDataSwitch } from "../../hooks/useDataSwitch";
+import RadialBarChartSetup from "../../components/graphs/radial-bar-chart-setup/RadialBarChart";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import GetData from "../../services/GetData";
 
 function ProfilePage() {
   const { id } = useParams();
-  console.log('Je suis ici: ' + id);
+  const { isMock } = useDataSwitch();
 
-  const { userData, activityData, loading } = GetData(id);
+  const {
+    userData,
+    activityData,
+    averageSessionData,
+    performanceData,
+    loading,
+  } = GetData(id, isMock);
 
-  console.log(userData, activityData);
-
-  // const activity = useDataFetcher(false, id, '/activity');
+  console.log(
+    "userdata",
+    userData,
+    "activityData",
+    activityData,
+    "averageSession",
+    averageSessionData,
+    "performance",
+    performanceData,
+    "loading",
+    loading
+  );
 
   useEffect(() => {}, []);
-  const { isMock } = useDataSwitch();
 
   // const userID = prop.data.id;
   // const activity = useDataFetcher(isMock, userID, '/activity');
@@ -81,39 +95,39 @@ function ProfilePage() {
           <TopNavbar />
           <SideNavbar />
           <main>
-            <div className='welcome-name'>
-              <span>Bonjour</span>{' '}
-              <span style={{ color: '#FF0101' }}>
+            <div className="welcome-name">
+              <span>Bonjour</span>{" "}
+              <span style={{ color: "#FF0101" }}>
                 {/* {prop.data.userInfos.firstName} */}
               </span>
             </div>
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
 
-            <div className='main-container'>
-              <div className='graph-container'>
-                <div className='barchart-container'>
-                  <div className='info-container'>
-                    <span className='barchart-title'>Activité quotidienne</span>
-                    <div className='legend-container'>
-                      <div className='legend'>
-                        <span className='kg'></span>
+            <div className="main-container">
+              <div className="graph-container">
+                <div className="barchart-container">
+                  <div className="info-container">
+                    <span className="barchart-title">Activité quotidienne</span>
+                    <div className="legend-container">
+                      <div className="legend">
+                        <span className="kg"></span>
                         <span>Poids (kg)</span>
                       </div>
-                      <div className='legend'>
-                        <span className='cal'></span>
+                      <div className="legend">
+                        <span className="cal"></span>
                         <span>Calories brûlées (kCal)</span>
                       </div>
                     </div>
                   </div>
-                  <div className='main-container'>
+                  <div className="main-container">
                     {/* <BarChartSetup
                   barChartData={barChartData}
                   kgMinMaxValues={kgMinMaxValues}
                 /> */}
                   </div>
-                  <div className='second-container'>
-                    <div className='linechart-container'>
-                      <span className='linechart-title'>
+                  <div className="second-container">
+                    <div className="linechart-container">
+                      <span className="linechart-title">
                         Durée moyenne des sessions
                       </span>
                       {/* <LineChartSetup lineChartData={lineChartData} /> */}
@@ -125,7 +139,7 @@ function ProfilePage() {
                   </div>
                 </div>
               </div>
-              <div className='infocards-container'>
+              <div className="infocards-container">
                 {/* <InfoCard
               iconPath={caloriesIconLocation}
               value={prop.data.keyData.calorieCount}
