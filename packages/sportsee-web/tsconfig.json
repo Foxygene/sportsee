@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "hooks"],
+  "include": ["src", "hooks", "src/services/dataFormater.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

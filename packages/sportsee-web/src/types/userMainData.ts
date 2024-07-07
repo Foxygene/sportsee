@@ -1,4 +1,4 @@
-export type userMainData = {
+export type rawUserMainData = {
   data: {
     id: number;
     userInfos: { firstName: string; lastName: string; age: number };

@@ -45,10 +45,15 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   );
 };
 
-function BarChartSetup(props: {
-  barChartData: { day: string; Kilogrammes: number; Calories: number }[];
-  kgMinMaxValues: number[];
-}) {
+function BarChartSetup(
+  props:
+    | {
+        barChartData: { day: string; Kilogrammes: number; Calories: number }[];
+        kgMinMaxValues: number[];
+      }
+    | undefined
+) {
+  console.log(props);
   return (
     <ResponsiveContainer className={"barchart"} width="100%" height={185}>
       <BarChart

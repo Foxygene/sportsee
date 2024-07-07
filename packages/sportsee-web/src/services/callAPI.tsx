@@ -4,6 +4,5 @@ export async function callAPI(userId: string, category: string) {
     `http://localhost:3000/user/${userId}${category}`
   );
   const userData = await response.json();
-  console.log(userData.data);
   return userData.data;
 }

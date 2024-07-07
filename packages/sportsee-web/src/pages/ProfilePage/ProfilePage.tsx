@@ -21,6 +21,7 @@ import RadialBarChartSetup from "../../components/graphs/radial-bar-chart-setup/
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GetData from "../../services/GetData";
+import { DataFormater } from "../../services/dataFormater";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -34,20 +35,27 @@ function ProfilePage() {
     loading,
   } = GetData(id, isMock);
 
-  console.log(
-    "userdata",
-    userData,
-    "activityData",
+  console.log(id);
+
+  console.log(userData, "alo ?");
+
+  const { barChartData, kgMinMaxValues, lineChartData } = DataFormater(
     activityData,
-    "averageSession",
-    averageSessionData,
-    "performance",
-    performanceData,
-    "loading",
-    loading
+    averageSessionData
   );
 
-  useEffect(() => {}, []);
+  console.log("ici", barChartData, kgMinMaxValues, lineChartData);
+
+  // const { id } = useParams();
+  // const { isMock } = useDataSwitch();
+
+  // const {
+  //   userData,
+  //   activityData,
+  //   averageSessionData,
+  //   performanceData,
+  //   loading,
+  // } = GetData(id, isMock);
 
   // const userID = prop.data.id;
   // const activity = useDataFetcher(isMock, userID, '/activity');
@@ -98,7 +106,7 @@ function ProfilePage() {
             <div className="welcome-name">
               <span>Bonjour</span>{" "}
               <span style={{ color: "#FF0101" }}>
-                {/* {prop.data.userInfos.firstName} */}
+                {userData.userInfos.firstName}
               </span>
             </div>
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
@@ -120,10 +128,10 @@ function ProfilePage() {
                     </div>
                   </div>
                   <div className="main-container">
-                    {/* <BarChartSetup
-                  barChartData={barChartData}
-                  kgMinMaxValues={kgMinMaxValues}
-                /> */}
+                    <BarChartSetup
+                      barChartData={barChartData}
+                      kgMinMaxValues={kgMinMaxValues}
+                    />
                   </div>
                   <div className="second-container">
                     <div className="linechart-container">
