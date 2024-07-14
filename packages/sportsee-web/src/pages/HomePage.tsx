@@ -13,7 +13,7 @@ function HomePage() {
         <DataSwitcherButton></DataSwitcherButton>
         <ul>
           {users.map((user) => (
-            <li>
+            <li key={user.id}>
               <Link to={`/user/${user.id}`}>
                 {user.userInfos.firstName} {user.userInfos.lastName}
               </Link>
