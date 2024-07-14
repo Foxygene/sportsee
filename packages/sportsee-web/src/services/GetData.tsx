@@ -58,90 +58,72 @@ const GetData = (userId: string, isMock: boolean) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isMock) {
-      const getUserData = async () => {
+    const fetchData = async () => {
+      setLoading(true);
+      if (!isMock) {
         try {
-          const data = await callAPI(userId, "");
-          setUserData(data);
+          await Promise.all([
+            (async () => {
+              const data = await callAPI(userId, "");
+              setUserData(data);
+            })(),
+            (async () => {
+              const data = await callAPI(userId, "/activity");
+              setActivityData(data);
+            })(),
+            (async () => {
+              const data = await callAPI(userId, "/average-sessions");
+              setAverageSessionData(data);
+            })(),
+            (async () => {
+              const data = await callAPI(userId, "/performance");
+              setPerformanceData(data);
+            })(),
+          ]);
         } catch (error) {
-          console.error("Error fetching user data:", error);
+          console.error("Error fetching data:", error);
         }
-      };
-
-      const getActivityData = async () => {
+      } else {
         try {
-          const data = await callAPI(userId, "/activity");
-          setActivityData(data);
+          const data = mockMainData.find(
+            (user) => user.id === parseInt(userId)
+          );
+          setUserData(data || null);
         } catch (error) {
-          console.error("Error fetching activity data:", error);
+          console.error("Error fetching user mock:", error);
         }
-      };
 
-      const getAverageSessionData = async () => {
         try {
-          const data = await callAPI(userId, "/average-sessions");
-          setAverageSessionData(data);
+          const data = mockActivity.find(
+            (user) => user.userId === parseInt(userId)
+          );
+          setActivityData(data || null);
         } catch (error) {
-          console.error("Error fetching average session data:", error);
+          console.error("Error fetching activity mock:", error);
         }
-      };
 
-      const getPerformanceData = async () => {
         try {
-          const data = await callAPI(userId, "/performance");
-          setPerformanceData(data);
+          const data = mockAverageSession.find(
+            (user) => user.userId === parseInt(userId)
+          );
+          setAverageSessionData(data || null);
         } catch (error) {
-          console.error("Error fetching performance data:", error);
+          console.error("Error fetching average session mock:", error);
         }
-      };
 
-      const fetchData = async () => {
-        setLoading(true);
-        await Promise.all([
-          getUserData(),
-          getActivityData(),
-          getAverageSessionData(),
-          getPerformanceData(),
-        ]);
-        setLoading(false);
-      };
-      fetchData();
-    } else {
-      try {
-        const data = mockMainData.find((user) => user.id === parseInt(userId));
-        setUserData(data || null);
-      } catch (error) {
-        console.error("Error fetching user mock:", error);
+        try {
+          const data = mockPerformance.find(
+            (user) => user.userId === parseInt(userId)
+          );
+          setPerformanceData(data || null);
+        } catch (error) {
+          console.error("Error fetching performance mock:", error);
+        }
       }
+      setLoading(false);
+    };
 
-      try {
-        const data = mockActivity.find(
-          (user) => user.userId === parseInt(userId)
-        );
-        setActivityData(data || null);
-      } catch (error) {
-        console.error("Error fetching activity mock:", error);
-      }
-
-      try {
-        const data = mockAverageSession.find(
-          (user) => user.userId === parseInt(userId)
-        );
-        setAverageSessionData(data || null);
-      } catch (error) {
-        console.error("Error fetching average session mock:", error);
-      }
-
-      try {
-        const data = mockPerformance.find(
-          (user) => user.userId === parseInt(userId)
-        );
-        setPerformanceData(data || null);
-      } catch (error) {
-        console.error("Error fetching performance mock:", error);
-      }
-    }
-    setLoading(false);
+    fetchData();
 
     return () => {
       setUserData(null);

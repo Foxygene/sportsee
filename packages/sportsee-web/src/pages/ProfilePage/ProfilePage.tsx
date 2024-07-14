@@ -6,22 +6,14 @@ import carbsIconLocation from "../../assets/carbs-icon.svg";
 import fatIconLocation from "../../assets/fat-icon.svg";
 import SideNavbar from "../../components/side-navbar/SideNavbar";
 import TopNavbar from "../../components/top-navbar/TopNavbar";
-import getData, {
-  getActivityData,
-  getAverageSessionData,
-  getPerformanceData,
-  useDataFetcher,
-} from "../../services/GetData";
-import { userMainData } from "../../types/userMainData";
 import "./profilePage.css";
 import LineChartSetup from "../../components/graphs/line-chart-setup/LineChartSetup";
 import RadarChartSetup from "../../components/graphs/radar-chart-setup/RadarChartSetup";
 import { useDataSwitch } from "../../hooks/useDataSwitch";
 import RadialBarChartSetup from "../../components/graphs/radial-bar-chart-setup/RadialBarChart";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GetData from "../../services/GetData";
-import { DataFormater } from "../../services/dataFormater";
+import { dataFormater } from "../../services/dataFormater";
 
 function ProfilePage() {
   const { id } = useParams();
@@ -35,64 +27,10 @@ function ProfilePage() {
     loading,
   } = GetData(id, isMock);
 
-  console.log(id);
-
-  console.log(userData, "alo ?");
-
-  const { barChartData, kgMinMaxValues, lineChartData } = DataFormater(
+  const { barChartData, kgMinMaxValues, lineChartData } = dataFormater(
     activityData,
     averageSessionData
   );
-
-  console.log("ici", barChartData, kgMinMaxValues, lineChartData);
-
-  // const { id } = useParams();
-  // const { isMock } = useDataSwitch();
-
-  // const {
-  //   userData,
-  //   activityData,
-  //   averageSessionData,
-  //   performanceData,
-  //   loading,
-  // } = GetData(id, isMock);
-
-  // const userID = prop.data.id;
-  // const activity = useDataFetcher(isMock, userID, '/activity');
-
-  // console.log(activity);
-
-  // const barChartData = activity.sessions.map((session) => {
-  //   return {
-  //     day: session.day.substring(9),
-  //     Kilogrammes: session.kilogram,
-  //     Calories: session.calories,
-  //   };
-  // });
-
-  // const average = getAverageSessionData(isMock, prop.data.id)![0];
-
-  // const lineChartData = average.sessions.map((session) => {
-  //   return {
-  //     day: session.day,
-  //     sessionLength: session.sessionLength,
-  //   };
-  // });
-
-  // const kgMinMaxValues = [
-  //   Math.min(
-  //     ...barChartData.map((session) => {
-  //       return session.Kilogrammes;
-  //     })
-  //   ),
-  //   Math.max(
-  //     ...barChartData.map((session) => {
-  //       return session.Kilogrammes;
-  //     })
-  //   ),
-  // ];
-
-  // const performance = getPerformanceData(isMock, prop.data.id)![0];
 
   return (
     <>
@@ -138,36 +76,36 @@ function ProfilePage() {
                       <span className="linechart-title">
                         Durée moyenne des sessions
                       </span>
-                      {/* <LineChartSetup lineChartData={lineChartData} /> */}
+                      <LineChartSetup lineChartData={lineChartData} />
                     </div>
-                    {/* <RadarChartSetup RadarChartData={performance.data} /> */}
-                    {/* <RadialBarChartSetup
-                  score={prop.data.todayScore ?? prop.data.score}
-                /> */}
+                    <RadarChartSetup RadarChartData={performanceData.data} />
+                    <RadialBarChartSetup
+                      score={userData.todayScore ?? userData.score}
+                    />
                   </div>
                 </div>
               </div>
               <div className="infocards-container">
-                {/* <InfoCard
-              iconPath={caloriesIconLocation}
-              value={prop.data.keyData.calorieCount}
-              type={['Calories', 'kCal']}
-            />
-            <InfoCard
-              iconPath={proteinIconLocation}
-              value={prop.data.keyData.proteinCount}
-              type={['Proteines', 'g']}
-            />
-            <InfoCard
-              iconPath={carbsIconLocation}
-              value={prop.data.keyData.carbohydrateCount}
-              type={['Glucides', 'g']}
-            />
-            <InfoCard
-              iconPath={fatIconLocation}
-              value={prop.data.keyData.lipidCount}
-              type={['Lipides', 'g']}
-            /> */}
+                <InfoCard
+                  iconPath={caloriesIconLocation}
+                  value={userData.keyData.calorieCount}
+                  type={["Calories", "kCal"]}
+                />
+                <InfoCard
+                  iconPath={proteinIconLocation}
+                  value={userData.keyData.proteinCount}
+                  type={["Proteines", "g"]}
+                />
+                <InfoCard
+                  iconPath={carbsIconLocation}
+                  value={userData.keyData.carbohydrateCount}
+                  type={["Glucides", "g"]}
+                />
+                <InfoCard
+                  iconPath={fatIconLocation}
+                  value={userData.keyData.lipidCount}
+                  type={["Lipides", "g"]}
+                />
               </div>
             </div>
           </main>
