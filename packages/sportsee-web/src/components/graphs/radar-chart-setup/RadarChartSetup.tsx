@@ -6,6 +6,7 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
+import "./radarChartSetup.css";
 
 function RadarChartSetup(props) {
   const customTicks = [
@@ -18,7 +19,11 @@ function RadarChartSetup(props) {
   ];
 
   return (
-    <ResponsiveContainer width={340} height={300}>
+    <ResponsiveContainer
+      width={330}
+      height={300}
+      className={"radarchart-container"}
+    >
       <RadarChart
         width={258}
         height={263}

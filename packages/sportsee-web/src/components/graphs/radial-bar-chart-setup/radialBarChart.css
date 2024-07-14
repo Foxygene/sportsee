@@ -1,6 +1,19 @@
 .RBC-container {
   position: relative;
+  background-color: #fbfbfb;
 }
+
+.RBC-title {
+  position: absolute;
+  width: 39px;
+  height: 24px;
+  top: 24px;
+  left: 30px;
+  gap: 0px;
+  font-weight: bold;
+  size: 15px;
+}
+
 .RBC-inner-text {
   position: absolute;
   top: 50%;
@@ -10,6 +23,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.7);
   padding: 10px;
+}
+
+.RBC-score {
+  font-size: 26px;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.RBC-description {
+  margin-bottom: 0;
+  color: #74798c;
 }

@@ -19,9 +19,10 @@ const RadialBarChartSetup = ({ score }) => {
   return (
     <div className="RBC-container">
       <RadialBarChart
-        width={500}
+        className="radialbarchart"
+        width={330}
         height={300}
-        cx={250}
+        cx={165}
         cy={150}
         innerRadius={100}
         outerRadius={120}
@@ -36,10 +37,11 @@ const RadialBarChartSetup = ({ score }) => {
           <p>{score * 199}</p>
         </div>
       </RadialBarChart>
+      <span className="RBC-title">Score</span>
       <div className="RBC-inner-text">
-        <p>{score * 100}%</p>
-        <p>de votre</p>
-        <p>objectif</p>
+        <p className="RBC-score">{score * 100}%</p>
+        <p className="RBC-description">de votre</p>
+        <p className="RBC-description">objectif</p>
       </div>
     </div>
   );
