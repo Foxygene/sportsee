@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Bar,
   BarChart,
@@ -7,8 +7,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from "recharts";
-import "./barChartSetup.css";
+} from 'recharts';
+import './barChartSetup.css';
 
 interface PayloadItem {
   //Typing du payload pour le tooltip
@@ -38,9 +38,9 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
   }
 
   return (
-    <div className="tooltip-container">
-      <p className="tooltip-text">{`${payload[0]?.payload.Kilogrammes}kg`}</p>
-      <p className="tooltip-text">{`${payload[0]?.payload.Calories}Kcal`}</p>
+    <div className='tooltip-container'>
+      <p className='tooltip-text'>{`${payload[0]?.payload.Kilogrammes}kg`}</p>
+      <p className='tooltip-text'>{`${payload[0]?.payload.Calories}Kcal`}</p>
     </div>
   );
 };
@@ -55,7 +55,7 @@ function BarChartSetup(
 ) {
   console.log(props);
   return (
-    <ResponsiveContainer className={"barchart"} width="100%" height={185}>
+    <ResponsiveContainer className={'barchart'} width='100%' height={185}>
       <BarChart
         data={props.barChartData}
         margin={{
@@ -65,30 +65,30 @@ function BarChartSetup(
           bottom: 5,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-        <XAxis dataKey="day" tickMargin={20} />
+        <CartesianGrid strokeDasharray='3 3' vertical={false} />
+        <XAxis dataKey='day' tickMargin={20} />
         <YAxis
           domain={[props.kgMinMaxValues[0] - 1, props.kgMinMaxValues[1] + 1]}
-          orientation="right"
+          orientation='right'
           axisLine={false}
           tickLine={false}
-          yAxisId={"Kilo"}
+          yAxisId={'Kilo'}
           tickCount={4}
           tickMargin={43}
         />
-        <YAxis yAxisId={"Cal"} style={{ display: "none" }} />
+        <YAxis yAxisId={'Cal'} style={{ display: 'none' }} />
         <Tooltip content={<CustomTooltip />} />
         <Bar
-          dataKey="Kilogrammes"
-          fill="#000000"
-          yAxisId={"Kilo"}
+          dataKey='Kilogrammes'
+          fill='#000000'
+          yAxisId={'Kilo'}
           radius={[10, 10, 0, 0]}
           barSize={7}
         />
         <Bar
-          dataKey="Calories"
-          fill="#FF0101"
-          yAxisId={"Cal"}
+          dataKey='Calories'
+          fill='#FF0101'
+          yAxisId={'Cal'}
           radius={[10, 10, 0, 0]}
           barSize={7}
         />
