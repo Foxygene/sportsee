@@ -1,11 +1,12 @@
 main {
-  padding: 5rem 10rem;
+  padding: 5rem 5%;
 }
 
 .main-container {
   display: flex;
   flex-wrap: wrap;
   gap: 31px;
+  flex-wrap: wrap;
 }
 
 .barchart-container {
@@ -87,6 +88,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 39px;
+  flex-wrap: wrap;
 }
 
 .second-container {
@@ -94,9 +96,9 @@ main {
   justify-content: space-between;
 }
 
-@media (max-width: 1735px) {
+@media (max-width: 1455px) {
   .infocards-container {
+    display: flex;
     flex-direction: row;
-    width: 100%;
   }
 }

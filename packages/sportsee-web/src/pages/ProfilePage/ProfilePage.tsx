@@ -65,7 +65,7 @@ function ProfilePage() {
                       </div>
                     </div>
                   </div>
-                  <div className="main-container">
+                  <div>
                     <BarChartSetup
                       barChartData={barChartData}
                       kgMinMaxValues={kgMinMaxValues}
