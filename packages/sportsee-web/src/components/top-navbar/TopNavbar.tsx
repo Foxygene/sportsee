@@ -6,7 +6,7 @@ function TopNavbar() {
   return (
     <div className="top-navbar">
       <img src={logo} />
-      <Link to="/">Acceuil</Link>
+      <Link to="/">Accueil</Link>
       <a>Profil</a>
       <a>Réglages</a>
       <a>Communauté</a>
