@@ -35,7 +35,13 @@ function ProfilePage() {
   return (
     <>
       {loading ? (
-        <div>LOADING ....</div>
+        <>
+          <TopNavbar />
+          <SideNavbar />
+          <main>
+            <div>LOADING ....</div>
+          </main>
+        </>
       ) : (
         <>
           <TopNavbar />
